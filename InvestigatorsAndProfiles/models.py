@@ -8,3 +8,6 @@ class investigator(models.Model):
     profile = models.CharField(max_length=1000000)
     website = models.CharField(max_length=1000)
     # Pictures are to be uploaded as files later.
+
+    def __str__(self):
+        return self.name

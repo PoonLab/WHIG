@@ -13,3 +13,5 @@ class meeting(models.Model):
     year = models.CharField(max_length=4)
     # Pictures are to be uploaded as files later.
 
+    def __str__(self):
+        return self.title
