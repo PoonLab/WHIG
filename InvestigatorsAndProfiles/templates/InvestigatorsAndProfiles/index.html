@@ -1,0 +1,10 @@
+{% if allInvestigators %}
+    <h3>Principal Investigators:</h3>
+    <ul>
+        {%  for Investigator in allInvestigators %}
+        <li><a href="/investigators/{{ Investigator.id }}/">{{ Investigator.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Investigators to display.</h3>
+{% endif %}

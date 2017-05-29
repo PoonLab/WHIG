@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from .models import meeting
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>This is the page for the WHIG Meetings.")
+    allMeetings = meeting.objects.all()
+    context = {'allMeetings': allMeetings}
+    return render(request, 'WHIGMeetings/index.html', context)
+
+def detail(request, meeting_id):
+    return HttpResponse("<h2>Details for Meeting ID:"+str(meeting_id)+"</h2>")

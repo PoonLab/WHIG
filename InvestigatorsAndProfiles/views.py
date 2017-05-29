@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from .models import investigator
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>This is the page for the Principal Investigators and their profiles.")
+    allInvestigators = investigator.objects.all()
+    context = {'allInvestigators': allInvestigators}
+    return render(request, 'InvestigatorsAndProfiles/index.html', context)
+
+def detail(request, investigator_id):
+    return HttpResponse("<h2>Details for Investigator ID:"+str(investigator_id)+"</h2>")

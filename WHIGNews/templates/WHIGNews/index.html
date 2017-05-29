@@ -1,0 +1,10 @@
+{% if allArticles %}
+    <h3>News Articles:</h3>
+    <ul>
+        {%  for Article in allArticles %}
+        <li><a href="/news/{{ Article.id }}/">{{ Article.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Articles to display.</h3>
+{% endif %}
