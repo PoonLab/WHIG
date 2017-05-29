@@ -1,8 +1,5 @@
 from django.db import models
 
-
-# Create your models here.
-
 class article(models.Model):
     title = models.CharField(max_length=1000)
     story = models.CharField(max_length=1000000)
