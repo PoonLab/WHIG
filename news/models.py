@@ -7,3 +7,6 @@ class Article(models.Model):
     lastModified = models.DateField(auto_now = True, auto_now_add = False)
     URL =  models.CharField(max_length = 1000)
     # Pictures are to be uploaded via the administrator interface as files.
+
+    def __str__(self):
+        return self.title

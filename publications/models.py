@@ -9,3 +9,6 @@ class Publication(models.Model):
     date = models.DateField(auto_now = False, auto_now_add = False)
     authors_line = models.CharField(max_length = 1000)
 
+    def __str__(self):
+        return self.title
+

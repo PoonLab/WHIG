@@ -10,16 +10,28 @@ class Member(models.Model):
     is_core = models.BooleanField()
     # Pictures are to be uploaded via the administrator interface as files.
 
+    def __str__(self):
+        return self.given_name, self.surname
+
 class Faculty(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
     rank = models.CharField(max_length = 1000) # Position
+
+    def __str__(self):
+        return self.member.given_name, self.member.surname
 
 class Trainee(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
     PI = models.ForeignKey(Faculty, on_delete=models.CASCADE)  # Principal Investigator / Adviser
     rank = models.CharField(max_length = 1000) # Position
 
+    def __str__(self):
+        return self.member.given_name, self.member.surname
+
 class Staff(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
     PI = models.ForeignKey(Faculty, on_delete=models.CASCADE)  # Principal Investigator / Adviser
     rank = models.CharField(max_length = 1000) # Position
+
+    def __str__(self):
+        return self.member.given_name, self.member.surname
