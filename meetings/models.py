@@ -1,12 +1,17 @@
 from django.db import models
 from members.models import Faculty, Trainee, Staff
 
-class Publication(models.Model):
-    faculty = models.ForeignKey(Faculty, on_delete = models.CASCADE)
-    trainee = models.ForeignKey(Trainee, on_delete = models.CASCADE)
-    staff = models.ForeignKey(Staff, on_delete = models.CASCADE)
-    title = models.CharField(max_length = 1000)
+class Event(models.Model):
     date = models.DateField(auto_now = False, auto_now_add = False)
-    authors_line = models.CharField(max_length = 1000)
+    time = models.TimeField(auto_now = False, auto_now_add = False)
+    is_cancelled = models.BooleanField()
 
+class Presentation(models.Model):
+    presenter = models.ForeignKey(Faculty, Trainee, Staff, on_delete = models.CASCADE)
+    meeting = models.ForeignKey(Event, on_delete = models.CASCADE)
+    paper = models.ForeignKey(Paper, on_delete = models.CASCADE)
+
+class Paper(models.Model):
+    title = models.CharField(max_length = 1000)
+    URL = models.CharField(max_length = 1000)
 
