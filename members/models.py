@@ -16,10 +16,10 @@ class Faculty(models.Model):
 
 class Trainee(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
+    PI = models.ForeignKey(Faculty, on_delete=models.CASCADE)  # Principal Investigator / Adviser
     rank = models.CharField(max_length = 1000) # Position
-    PI = models.CharField(max_length = 1000) # Principal Investigator / Adviser
 
 class Staff(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
+    PI = models.ForeignKey(Faculty, on_delete=models.CASCADE)  # Principal Investigator / Adviser
     rank = models.CharField(max_length = 1000) # Position
-    PI = models.CharField(max_length = 1000) # Principal Investigator / Adviser

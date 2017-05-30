@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdaad6ce-f8eb-4f1b-a701-b20cb674f1c0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/members/models.py" afterPath="$PROJECT_DIR$/members/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/members/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -957,8 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/members/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="360">
+          <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
           <folding />
         </state>
       </provider>
