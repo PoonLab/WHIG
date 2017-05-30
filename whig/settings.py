@@ -31,9 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'InvestigatorsAndProfiles.apps.InvestigatorsAndProfilesConfig',
-    'WHIGMeetings.apps.WHIGMeetingsConfig',
-    'WHIGNews.apps.WHIGNewsConfig',
+    #'InvestigatorsAndProfiles.apps.InvestigatorsAndProfilesConfig',
+    #'WHIGMeetings.apps.WHIGMeetingsConfig',
+    #'WHIGNews.apps.WHIGNewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
