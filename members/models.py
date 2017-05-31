@@ -4,11 +4,11 @@ class Member(models.Model):
     given_name = models.CharField(max_length = 1000)
     surname = models.CharField(max_length = 1000)
     profile = models.CharField(max_length = 1000000)
-    website = models.CharField(max_length = 1000)
-    ORCID = models.CharField(max_length = 1000)
+    website = models.CharField(max_length = 1000, null = True, blank = True)
+    ORCID = models.CharField(max_length = 1000, null = True, blank = True)
     is_active = models.BooleanField()
     is_core = models.BooleanField()
-    # Pictures are to be uploaded via the administrator interface as files.
+    picture  =models.ImageField(null = True, blank = True)
 
     def __str__(self):
         return self.given_name, self.surname

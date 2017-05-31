@@ -17,10 +17,10 @@ class Paper(models.Model):
         return self.title
 
 class Presentation(models.Model):
-    trainee_presenter = models.ForeignKey(Trainee, on_delete = models.CASCADE)
-    staff_presenter = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    trainee_presenter = models.ForeignKey(Trainee, on_delete = models.CASCADE, null = True, blank = True)
+    staff_presenter = models.ForeignKey(Staff, on_delete=models.CASCADE, null = True, blank = True)
     meeting = models.ForeignKey(Event, on_delete = models.CASCADE)
-    paper = models.ForeignKey(Paper, on_delete = models.CASCADE)
+    paper = models.ForeignKey(Paper, on_delete = models.CASCADE, null = True, blank = True)
 
     def __str__(self):
         return self.meeting.date
