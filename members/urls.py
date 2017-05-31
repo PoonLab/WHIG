@@ -2,5 +2,11 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url('^$', views.index, name = 'index')
+
+    # /members/
+    url('^$', views.index, name = 'index'),
+
+    # /members/71
+    url(r'^(?P<Member_id>[0-9]+)/$', views.detail, name='detail'),
+
 ]
