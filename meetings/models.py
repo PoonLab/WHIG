@@ -7,7 +7,7 @@ class Event(models.Model):
     is_cancelled = models.BooleanField()
 
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 class Paper(models.Model):
     title = models.CharField(max_length = 1000)
@@ -23,7 +23,7 @@ class Presentation(models.Model):
     paper = models.ForeignKey(Paper, on_delete = models.CASCADE, null = True, blank = True)
 
     def __str__(self):
-        return self.meeting.date
+        return str(self.meeting.date)
 
 
 
