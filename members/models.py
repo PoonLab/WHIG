@@ -4,6 +4,7 @@ class Member(models.Model):
     given_name = models.CharField(max_length = 1000)
     surname = models.CharField(max_length = 1000)
     profile = models.CharField(max_length = 1000000)
+    email = models.CharField(max_length=1000, null = True, blank = True)
     website = models.CharField(max_length = 1000, null = True, blank = True)
     ORCID = models.CharField(max_length = 1000, null = True, blank = True)
     is_active = models.BooleanField()
@@ -11,14 +12,14 @@ class Member(models.Model):
     picture  =models.ImageField(null = True, blank = True)
 
     def __str__(self):
-        return self.given_name, self.surname
+        return self.given_name + ' ' + self.surname
 
 class Faculty(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
     rank = models.CharField(max_length = 1000) # Position
 
     def __str__(self):
-        return self.member.given_name, self.member.surname
+        return self.member.given_name + ' ' + self.member.surname
 
     class Meta:
         verbose_name = 'Faculty'
@@ -30,7 +31,7 @@ class Trainee(models.Model):
     rank = models.CharField(max_length = 1000) # Position
 
     def __str__(self):
-        return self.member.given_name, self.member.surname
+        return self.member.given_name + ' ' + self.member.surname
 
 class Staff(models.Model):
     member = models.ForeignKey(Member, on_delete = models.CASCADE)
@@ -38,7 +39,7 @@ class Staff(models.Model):
     rank = models.CharField(max_length = 1000) # Position
 
     def __str__(self):
-        return self.member.given_name, self.member.surname
+        return self.member.given_name + ' ' + self.member.surname
 
     class Meta:
         verbose_name = 'Staff'
