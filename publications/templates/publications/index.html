@@ -1,0 +1,10 @@
+{% if all_publications %}
+    <h3>WHIG Publications:</h3>
+    <ul>
+        {%  for publication in all_publications %}
+        <li><a href="/publications/{{ publication.id }}/">{{ publication.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Publications to display.</h3>
+{% endif %}
