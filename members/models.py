@@ -9,7 +9,7 @@ class Member(models.Model):
     ORCID = models.CharField(max_length = 1000, null = True, blank = True)
     is_active = models.BooleanField()
     is_core = models.BooleanField()
-    picture  =models.ImageField(null = True, blank = True)
+    image = models.ImageField(upload_to = './images/members/', default = './images/members/DefaultImage.png')
 
     def __str__(self):
         return self.given_name + ' ' + self.surname
