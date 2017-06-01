@@ -1,1 +1,11 @@
-{{ article }}
+<h3>{{ article.title }}</h3>
+
+<p>
+    Published on: {{ article.date }}<br/>
+    Last modified on: {{ article.lastModified }}<br/>
+</p>
+
+<img src="{{ article.image }}">
+
+<p>{{ article.body }}</p>
+
