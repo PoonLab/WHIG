@@ -14,9 +14,21 @@ def index(request):
     return render(request, 'members/index.html', context)
 
 def detail(request, Member_id):
+    context = {}
     try:
-        member = Member.objects.get(pk = Member_id)
-    except Member.DoesNotExist:
-        raise Http404("Member doesn't exist!")
-    return render(request, 'members/detail.html', {'member' : member})
+        faculty = Faculty.objects.get(pk = Member_id)
+        context.update({'faculty': faculty})
+    except Faculty.DoesNotExist:
+        try:
+            trainee = Trainee.objects.get(pk = Member_id)
+            context.update({'trainees': trainee})
+        except Trainee.DoesNotExist:
+            try:
+                employee = Staff.objects.get(pk = Member_id)
+                context.update({'employee': employee})
+            except Staff.DoesNotExist:
+                raise Http404("Member doesn't exist!")
+    return render(request, 'members/detail.html', context)
+
+
 
