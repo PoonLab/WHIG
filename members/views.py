@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Faculty, Trainee, Staff
+from django.http import Http404
+from .models import Member, Faculty, Trainee, Staff
 
 def index(request):
     all_faculty = Faculty.objects.all()
@@ -14,5 +14,9 @@ def index(request):
     return render(request, 'members/index.html', context)
 
 def detail(request, Member_id):
-    return HttpResponse("<h2>Details for member:" + str(Member_id) + "</<h2>")
+    try:
+        member = Member.objects.get(pk = Member_id)
+    except Member.DoesNotExist:
+        raise Http404("Member doesn't exist!")
+    return render(request, 'members/detail.html', {'member' : member})
 

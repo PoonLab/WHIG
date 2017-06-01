@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import Http404
 from .models import Event, Paper, Presentation
 
 def index(request):
@@ -7,5 +7,9 @@ def index(request):
     return render(request, 'meetings/index.html', {'all_events' : all_events})
 
 def detail(request, Event_id):
-    return HttpResponse("<h2>Details for event:" + str(Event_id) + "</<h2>")
+    try:
+        event = Event.objects.get(pk = Event_id)
+    except Event.DoesNotExist:
+        raise Http404("Event doesn't exist!")
+    return render(request, 'meetings/detail.html', {'event' : event})
 
