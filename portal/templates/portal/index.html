@@ -1,0 +1,45 @@
+<h1>WHIG</h1>
+
+{% if all_faculty %}
+    <h3><a href="/members/">Principal Investigators:</a></h3>
+    <ul>
+        {%  for faculty in all_faculty|slice:":3"  %}
+        <li><a href="/members/{{ faculty.id }}/">{{ faculty.member.given_name }} {{ ' ' }} {{ faculty.member.surname }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Principal Investigators to display.</h3>
+{% endif %}
+
+{% if all_events %}
+    <h3><a href="/meetings/">WHIG Meetings:</a></h3>
+    <ul>
+        {%  for event in all_events|slice:":3" %}
+        <li><a href="/meetings/{{ event.id }}/">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Events to display.</h3>
+{% endif %}
+
+{% if all_articles %}
+    <h3><a href="/news/">WHIG News:</a></h3>
+    <ul>
+        {%  for article in all_articles|slice:":3" %}
+        <li><a href="/news/{{ article.id }}/">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any News to display.</h3>
+{% endif %}
+
+{% if all_publications %}
+    <h3><a href="/publications/">WHIG Publications:</a></h3>
+    <ul>
+        {%  for publication in all_publications|slice:":3"  %}
+        <li><a href="/publications/{{ publication.id }}/">{{ publication.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any Publications to display.</h3>
+{% endif %}

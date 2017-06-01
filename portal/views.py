@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from members.models import Faculty, Trainee, Staff
-from meetings.models import Event, Paper, Presentation
+from meetings.models import Event
 from news.models import Article
 from publications.models import Publication
 
