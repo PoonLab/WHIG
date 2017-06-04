@@ -1,12 +1,9 @@
 <h3>{{ article.title }}</h3>
-
 <p>
     Published on: {{ article.date }}<br/>
     Last modified on: {{ article.lastModified }}<br/>
 </p>
-
 {% load static %}
 <img src="{% static article.image.url|slice:"12:" %}" alt="Article Image"/>
-
 <p>{{ article.body }}</p>
 

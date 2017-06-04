@@ -2,7 +2,7 @@
     <h3>WHIG Meetings:</h3>
     <ul>
         {%  for event in all_events %}
-        <li><a href="/meetings/{{ event.id }}/">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
+            <li><a href="/meetings/{{ event.id }}/">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

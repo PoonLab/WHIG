@@ -1,34 +1,35 @@
-<h1>WHIG Members:</h1>
-
-{% if all_faculty %}
+{% if all_members %}
+    <h1>WHIG Members:</h1>
     <h3>Principal Investigators:</h3>
     <ul>
-        {%  for faculty in all_faculty %}
-        <li><a href="/members/{{ faculty.id }}/">{{ faculty }}</a></li>
+        {%  for member in all_members %}
+            {% for faculty in all_faculty %}
+                {% if member == faculty.member %}
+                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </ul>
-{% else %}
-    <h3>There aren't any Principal Investigators to display.</h3>
-{% endif %}
-
-{% if all_staff %}
     <h3>Staff:</h3>
     <ul>
-        {%  for employee in all_staff %}
-        <li><a href="/members/{{ employee.id }}/">{{ employee }}</a></li>
+        {%  for member in all_members %}
+            {% for employee in all_staff %}
+                {% if member == employee.member %}
+                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </ul>
-{% else %}
-    <h3>There aren't any Staff to display.</h3>
-{% endif %}
-
-{% if all_trainees %}
     <h3>Trainees:</h3>
     <ul>
-        {%  for trainee in all_trainees %}
-        <li><a href="/members/{{ trainee.id }}/">{{ trainee }}</a></li>
+        {%  for member in all_members %}
+            {% for trainee in all_trainees %}
+                {% if member == trainee.member %}
+                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </ul>
 {% else %}
-    <h3>There aren't any Trainees to display.</h3>
+    <h3>There aren't any Members to display.</h3>
 {% endif %}
