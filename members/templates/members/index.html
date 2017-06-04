@@ -4,7 +4,7 @@
     <h3>Principal Investigators:</h3>
     <ul>
         {%  for faculty in all_faculty %}
-        <li><a href="/members/{{ faculty.id }}/">{{ faculty.member.given_name }} {{ ' ' }} {{ faculty.member.surname }}</a></li>
+        <li><a href="/members/{{ faculty.id }}/">{{ faculty }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
@@ -15,7 +15,7 @@
     <h3>Staff:</h3>
     <ul>
         {%  for employee in all_staff %}
-        <li><a href="/members/{{ employee.id }}/">{{ employee.member.given_name }} {{ ' ' }} {{ employee.member.surname }}</a></li>
+        <li><a href="/members/{{ employee.id }}/">{{ employee }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
@@ -26,7 +26,7 @@
     <h3>Trainees:</h3>
     <ul>
         {%  for trainee in all_trainees %}
-        <li><a href="/members/{{ trainee.id }}/">{{ trainee.member.given_name }} {{ ' ' }} {{ trainee.member.surname }}</a></li>
+        <li><a href="/members/{{ trainee.id }}/">{{ trainee }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

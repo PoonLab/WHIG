@@ -1,1 +1,18 @@
-{{ event }}
+{% if event.is_cancelled %}
+    <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
+    <p>Meeting was cancelled!</p>
+{% else %}
+    <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
+    {% for presentation in event.presentation_set.all %}
+        {% if presentation.trainee_presenter %}
+            <p>Presenter: {{ presentation.trainee_presenter }}</p>
+            {% load static %}
+            <img src="{% static presentation.trainee_presenter.member.image.url|slice:"15:" %}" alt="Trainee Image"/>
+        {% elif presentation.staff_presenter %}
+            <p>Presenter: {{ presentation.staff_presenter }}</p>
+            <img src="{% static presentation.staff_presenter.member.image.url|slice:"15:" %}" alt="Staff Image"/>
+        {% endif %}
+        <p></p>
+    {% endfor %}
+{% endif %}
+
