@@ -5,7 +5,11 @@
     Last modified on: {{ article.lastModified }}<br/>
 </p>
 
-<img src="{{ article.image }}">
+{% load static %}
+<img src="{% static "news/QUIRKS_AND_QUARKS_INTERVIEW_WITH_DR._ERIC_ARTS.jpg" %}" alt="Article Image"/>
 
 <p>{{ article.body }}</p>
 
+{% with image_relative_path=article.image.url|slice:"12:" %}
+    <p>{{ image_relative_path }}</p>
+{% endwith %}

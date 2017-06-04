@@ -6,7 +6,7 @@ class Article(models.Model):
     date = models.DateField(auto_now = False, auto_now_add = True)
     lastModified = models.DateField(auto_now = True, auto_now_add = False)
     URL =  models.CharField(max_length = 1000, null = True, blank = True)
-    image = models.ImageField(upload_to = './images/news/', null = True, blank = True)
+    image = models.ImageField(upload_to = './news/static/news', null = True, blank = True)
 
     def __str__(self):
         return self.title
