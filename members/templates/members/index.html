@@ -5,7 +5,7 @@
         {%  for member in all_members %}
             {% for faculty in all_faculty %}
                 {% if member == faculty.member %}
-                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
         {% endfor %}
@@ -15,7 +15,7 @@
         {%  for member in all_members %}
             {% for employee in all_staff %}
                 {% if member == employee.member %}
-                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
         {% endfor %}
@@ -25,7 +25,7 @@
         {%  for member in all_members %}
             {% for trainee in all_trainees %}
                 {% if member == trainee.member %}
-                    <li><a href="/members/{{ member.id }}/">{{ member }}</a></li>
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
         {% endfor %}

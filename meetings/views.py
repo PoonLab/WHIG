@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from .models import Event, Paper
+from .models import Event
 
 def index(request):
     all_events = Event.objects.all()
