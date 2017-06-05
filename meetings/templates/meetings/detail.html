@@ -12,7 +12,12 @@
             <p>Presenter: {{ presentation.staff_presenter }}</p>
             <img src="{% static presentation.staff_presenter.member.image.url|slice:"15:" %}" alt="Staff Image"/>
         {% endif %}
-        <p></p>
+        {% if presentation.paper %}
+            <p>Paper: <a href="{{ presentation.paper.URL }}">{{ presentation.paper.title }}</a></p>
+        {% else %}
+            <p>There is no paper for this meeting. Instead, the presenter will discuss their own research.</p>
+        {% endif %}
     {% endfor %}
 {% endif %}
+<a href="/">Back to Portal!</a>
 
