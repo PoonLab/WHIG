@@ -4,7 +4,14 @@
     <ul>
         {%  for member in all_members %}
             {% for faculty in all_faculty %}
-                {% if member == faculty.member %}
+                {% if member == faculty.member and member.is_active and member.is_core %}
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {%  for member in all_members %}
+            {% for faculty in all_faculty %}
+                {% if member == faculty.member and member.is_active and not member.is_core %}
                     <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
@@ -14,7 +21,14 @@
     <ul>
         {%  for member in all_members %}
             {% for employee in all_staff %}
-                {% if member == employee.member %}
+                {% if member == employee.member and member.is_active and member.is_core %}
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {%  for member in all_members %}
+            {% for employee in all_staff %}
+                {% if member == employee.member and member.is_active and not member.is_core %}
                     <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
@@ -24,7 +38,14 @@
     <ul>
         {%  for member in all_members %}
             {% for trainee in all_trainees %}
-                {% if member == trainee.member %}
+                {% if member == trainee.member and member.is_active and member.is_core %}
+                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {%  for member in all_members %}
+            {% for trainee in all_trainees %}
+                {% if member == trainee.member and member.is_active and not member.is_core %}
                     <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
                 {% endif %}
             {% endfor %}
