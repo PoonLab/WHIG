@@ -3,7 +3,7 @@ from django.http import Http404
 from .models import Event
 
 def index(request):
-    all_events = Event.objects.all()
+    all_events = Event.objects.all().order_by('date').reverse()
     return render(request, 'meetings/index.html', {'all_events' : all_events})
 
 def detail(request, Event_id):

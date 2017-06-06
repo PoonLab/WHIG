@@ -3,7 +3,7 @@ from django.http import Http404
 from .models import  Article
 
 def index(request):
-    all_articles = Article.objects.all()
+    all_articles = Article.objects.all().order_by('date').reverse()
     return render(request, 'news/index.html', {'all_articles' : all_articles})
 
 def detail(request, Article_id):

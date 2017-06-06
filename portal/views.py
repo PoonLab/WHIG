@@ -9,9 +9,9 @@ def index(request):
     all_faculty = Faculty.objects.all()
     all_trainees = Trainee.objects.all()
     all_staff = Staff.objects.all()
-    all_events = Event.objects.all()
-    all_articles = Article.objects.all()
-    all_publications = Publication.objects.all()
+    all_events = Event.objects.all().order_by('date').reverse()
+    all_articles = Article.objects.all().order_by('date').reverse()
+    all_publications = Publication.objects.all().order_by('date').reverse()
     context = {
         'all_members' : all_members,
         'all_faculty': all_faculty,
