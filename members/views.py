@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 from .models import Member, Faculty, Trainee, Staff
 
 def index(request):
@@ -16,10 +15,7 @@ def index(request):
     return render(request, 'members/index.html', context)
 
 def detail(request, Member_id):
-    try:
-        member = Member.objects.get(pk = Member_id)
-    except Member.DoesNotExist:
-        raise Http404("Member doesn't exist!")
+    member = get_object_or_404(Member, pk = Member_id)
     return render(request, 'members/detail.html', {'member' : member})
 
 

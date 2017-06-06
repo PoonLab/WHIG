@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 from .models import  Publication
 
 def index(request):
@@ -7,9 +6,6 @@ def index(request):
     return render(request, 'publications/index.html', {'all_publications' : all_publications})
 
 def detail(request, Publication_id):
-    try:
-        publication = Publication.objects.get(pk = Publication_id)
-    except Publication.DoesNotExist:
-        raise Http404("Publication doesn't exist!")
+    publication = get_object_or_404(Publication, pk = Publication_id)
     return render(request, 'publications/detail.html', {'publication' : publication})
 
