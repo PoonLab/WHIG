@@ -1,12 +1,12 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}"/>
-<h3>{{ article.title }}</h3>
-<p>
-    Published on: {{ article.date }}<br/>
-    Last modified on: {{ article.lastModified }}<br/>
-</p>
-{% load static %}
-<img src="{% static article.image.url|slice:"12:" %}" alt="Article Image"/>
-<p>{{ article.body }}</p>
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block body %}
+    <h3>{{ article.title }}</h3>
+    <p>
+        Published on: {{ article.date }}<br/>
+        Last modified on: {{ article.lastModified }}<br/>
+    </p>
+    {% load static %}
+    <img src="{% static article.image.url|slice:"12:" %}" alt="Article Image"/>
+    <p>{{ article.body }}</p>
+{% endblock %}

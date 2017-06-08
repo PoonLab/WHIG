@@ -1,14 +1,14 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'meetings/style.css' %}"/>
-{% if all_events %}
-    <h3>WHIG Meetings:</h3>
-    <ul>
-        {%  for event in all_events %}
-            <li><a href="{% url 'meetings:detail' event.id %}">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Events to display.</h3>
-{% endif %}
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}WHIG Meetings{% endblock %}
+{% block body %}
+    {% if all_events %}
+        <h3>WHIG Meetings:</h3>
+        <ul>
+            {%  for event in all_events %}
+                <li><a href="{% url 'meetings:detail' event.id %}">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any Events to display.</h3>
+    {% endif %}
+{% endblock %}

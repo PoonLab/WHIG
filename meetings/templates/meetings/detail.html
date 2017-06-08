@@ -1,26 +1,26 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'meetings/style.css' %}"/>
-{% if event.is_cancelled %}
-    <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
-    <p>Meeting was cancelled!</p>
-{% else %}
-    <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
-    {% for presentation in event.presentation_set.all %}
-        {% if presentation.trainee_presenter %}
-            <p>Presenter: {{ presentation.trainee_presenter }}</p>
-            {% load static %}
-            <img src="{% static presentation.trainee_presenter.member.image.url|slice:"15:" %}" alt="Trainee Image"/>
-        {% elif presentation.staff_presenter %}
-            <p>Presenter: {{ presentation.staff_presenter }}</p>
-            <img src="{% static presentation.staff_presenter.member.image.url|slice:"15:" %}" alt="Staff Image"/>
-        {% endif %}
-        {% if presentation.paper %}
-            <p>Paper: <a href="{{ presentation.paper.URL }}">{{ presentation.paper.title }}</a></p>
-        {% else %}
-            <p>There is no paper for this meeting. Instead, the presenter will discuss their own research.</p>
-        {% endif %}
-    {% endfor %}
-{% endif %}
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}WHIG Meeting: {{ event.date }}{% endblock %}
+{% block body %}
+    {% if event.is_cancelled %}
+        <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
+        <p>Meeting was cancelled!</p>
+    {% else %}
+        <h3>{{ event.date }} {{ ' ' }} {{ event.time }}</h3>
+        {% for presentation in event.presentation_set.all %}
+            {% if presentation.trainee_presenter %}
+                <p>Presenter: {{ presentation.trainee_presenter }}</p>
+                {% load static %}
+                <img src="{% static presentation.trainee_presenter.member.image.url|slice:"15:" %}" alt="Trainee Image"/>
+            {% elif presentation.staff_presenter %}
+                <p>Presenter: {{ presentation.staff_presenter }}</p>
+                <img src="{% static presentation.staff_presenter.member.image.url|slice:"15:" %}" alt="Staff Image"/>
+            {% endif %}
+            {% if presentation.paper %}
+                <p>Paper: <a href="{{ presentation.paper.URL }}">{{ presentation.paper.title }}</a></p>
+            {% else %}
+                <p>There is no paper for this meeting. Instead, the presenter will discuss their own research.</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
 

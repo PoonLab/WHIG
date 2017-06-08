@@ -1,14 +1,14 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'publications/style.css' %}"/>
-{% if all_publications %}
-    <h3>WHIG Publications:</h3>
-    <ul>
-        {%  for publication in all_publications %}
-            <li><a href="{% url 'publications:detail' publication.id %}">{{ publication.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Publications to display.</h3>
-{% endif %}
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}WHIG Publications{% endblock %}
+{% block body %}
+    {% if all_publications %}
+        <h3>WHIG Publications:</h3>
+        <ul>
+            {%  for publication in all_publications %}
+                <li><a href="{% url 'publications:detail' publication.id %}">{{ publication.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any Publications to display.</h3>
+    {% endif %}
+{% endblock %}

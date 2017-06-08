@@ -1,14 +1,14 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}"/>
-{% if all_articles %}
-    <h3>WHIG News:</h3>
-    <ul>
-        {%  for article in all_articles %}
-            <li><a href="{% url 'news:detail' article.id %}">{{ article.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any News to display.</h3>
-{% endif %}
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}WHIG News{% endblock %}
+{% block body %}
+    {% if all_articles %}
+        <h3>WHIG News:</h3>
+        <ul>
+            {%  for article in all_articles %}
+                <li><a href="{% url 'news:detail' article.id %}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any News to display.</h3>
+    {% endif %}
+{% endblock %}

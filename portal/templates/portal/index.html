@@ -1,43 +1,45 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}"/>
-<h1><a href="/">WHIG</a></h1>
-{% if all_members %}
-    <h3><a href="{% url 'members:index' %}">WHIG Members:</a></h3>
-    <ul>
-        {%  for member in all_members|slice:":3" %}
-            <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Members to display.</h3>
-{% endif %}
-{% if all_events %}
-    <h3><a href="{% url 'meetings:index' %}">WHIG Meetings:</a></h3>
-    <ul>
-        {%  for event in all_events|slice:":3" %}
-            <li><a href="{% url 'meetings:detail' event.id %}">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Events to display.</h3>
-{% endif %}
-{% if all_articles %}
-    <h3><a href="{% url 'news:index' %}">WHIG News:</a></h3>
-    <ul>
-        {%  for article in all_articles|slice:":3" %}
-            <li><a href="{% url 'news:detail' article.id %}">{{ article.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any News to display.</h3>
-{% endif %}
-{% if all_publications %}
-    <h3><a href="{% url 'publications:index' %}">WHIG Publications:</a></h3>
-    <ul>
-        {%  for publication in all_publications|slice:":3"  %}
-            <li><a href="{% url 'publications:detail' publication.id %}">{{ publication.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Publications to display.</h3>
-{% endif %}
+{% extends 'portal/base.html' %}
+{% block title %}WHIG{% endblock %}
+{% block body %}
+    <h1><a href="/">WHIG</a></h1>
+    {% if all_members %}
+        <h3><a href="{% url 'members:index' %}">WHIG Members:</a></h3>
+        <ul>
+            {%  for member in all_members|slice:":3" %}
+                <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any Members to display.</h3>
+    {% endif %}
+    {% if all_events %}
+        <h3><a href="{% url 'meetings:index' %}">WHIG Meetings:</a></h3>
+        <ul>
+            {%  for event in all_events|slice:":3" %}
+                <li><a href="{% url 'meetings:detail' event.id %}">{{ event.date }} {{ ' ' }} {{ event.time }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any Events to display.</h3>
+    {% endif %}
+    {% if all_articles %}
+        <h3><a href="{% url 'news:index' %}">WHIG News:</a></h3>
+        <ul>
+            {%  for article in all_articles|slice:":3" %}
+                <li><a href="{% url 'news:detail' article.id %}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any News to display.</h3>
+    {% endif %}
+    {% if all_publications %}
+        <h3><a href="{% url 'publications:index' %}">WHIG Publications:</a></h3>
+        <ul>
+            {%  for publication in all_publications|slice:":3"  %}
+                <li><a href="{% url 'publications:detail' publication.id %}">{{ publication.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>There aren't any Publications to display.</h3>
+    {% endif %}
+{% endblock %}

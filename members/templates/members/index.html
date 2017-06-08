@@ -1,60 +1,60 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}"/>
-{% if all_members %}
-    <h1>WHIG Members:</h1>
-    <h3>Principal Investigators:</h3>
-    <ul>
-        {%  for member in all_members %}
-            {% for faculty in all_faculty %}
-                {% if member == faculty.member and member.is_active and member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+{% extends 'portal/base.html' %}
+{% block title %}WHIG Members{% endblock %}
+{% block body %}
+    {% if all_members %}
+        <h1>WHIG Members:</h1>
+        <h3>Principal Investigators:</h3>
+        <ul>
+            {%  for member in all_members %}
+                {% for faculty in all_faculty %}
+                    {% if member == faculty.member and member.is_active and member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        {%  for member in all_members %}
-            {% for faculty in all_faculty %}
-                {% if member == faculty.member and member.is_active and not member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+            {%  for member in all_members %}
+                {% for faculty in all_faculty %}
+                    {% if member == faculty.member and member.is_active and not member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </ul>
-    <h3>Staff:</h3>
-    <ul>
-        {%  for member in all_members %}
-            {% for employee in all_staff %}
-                {% if member == employee.member and member.is_active and member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+        </ul>
+        <h3>Staff:</h3>
+        <ul>
+            {%  for member in all_members %}
+                {% for employee in all_staff %}
+                    {% if member == employee.member and member.is_active and member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        {%  for member in all_members %}
-            {% for employee in all_staff %}
-                {% if member == employee.member and member.is_active and not member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+            {%  for member in all_members %}
+                {% for employee in all_staff %}
+                    {% if member == employee.member and member.is_active and not member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </ul>
-    <h3>Trainees:</h3>
-    <ul>
-        {%  for member in all_members %}
-            {% for trainee in all_trainees %}
-                {% if member == trainee.member and member.is_active and member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+        </ul>
+        <h3>Trainees:</h3>
+        <ul>
+            {%  for member in all_members %}
+                {% for trainee in all_trainees %}
+                    {% if member == trainee.member and member.is_active and member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        {%  for member in all_members %}
-            {% for trainee in all_trainees %}
-                {% if member == trainee.member and member.is_active and not member.is_core %}
-                    <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
-                {% endif %}
+            {%  for member in all_members %}
+                {% for trainee in all_trainees %}
+                    {% if member == trainee.member and member.is_active and not member.is_core %}
+                        <li><a href="{% url 'members:detail' member.id %}">{{ member }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>There aren't any Members to display.</h3>
-{% endif %}
-<a href="/">Back to Portal!</a>
+        </ul>
+    {% else %}
+        <h3>There aren't any Members to display.</h3>
+    {% endif %}
+{% endblock %}

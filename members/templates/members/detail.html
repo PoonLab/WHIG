@@ -1,27 +1,27 @@
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}"/>
-<h1>{{ member }}</h1>
-{% for faculty in member.faculty_set.all %}
-    {% if member == faculty.member %}
-        <h3>{{ faculty.rank }}</h3>
-    {% endif %}
-{% endfor %}
-{% for employee in member.staff_set.all %}
-    {% if member == employee.member %}
-        <h3>{{ employee.rank }}</h3>
-        <h3>Principal Investigator: {{ employee.PI }}</h3>
-    {% endif %}
-{% endfor %}
-{% for trainee in member.trainee_set.all %}
-    {% if member == trainee.member %}
-        <h3>{{ trainee.rank }}</h3>
-        <h3>Principal Investigator: {{ trainee.PI }}</h3>
-    {% endif %}
-{% endfor %}
-{% load static %}
-<img src="{% static member.image.url|slice:"15:" %}" alt="Member Image"/>
-<p>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></p>
-<p>{{ member.profile }}</p>
-<p>Website: <a href="{{ member.website }}">{{ member.website }}</a></p>
-<a href="/">Back to Portal!</a>
+{% extends 'portal/base.html' %}
+{% block title %}{{ member }}{% endblock %}
+{% block body %}
+    <h1>{{ member }}</h1>
+    {% for faculty in member.faculty_set.all %}
+        {% if member == faculty.member %}
+            <h3>{{ faculty.rank }}</h3>
+        {% endif %}
+    {% endfor %}
+    {% for employee in member.staff_set.all %}
+        {% if member == employee.member %}
+            <h3>{{ employee.rank }}</h3>
+            <h3>Principal Investigator: {{ employee.PI }}</h3>
+        {% endif %}
+    {% endfor %}
+    {% for trainee in member.trainee_set.all %}
+        {% if member == trainee.member %}
+            <h3>{{ trainee.rank }}</h3>
+            <h3>Principal Investigator: {{ trainee.PI }}</h3>
+        {% endif %}
+    {% endfor %}
+    {% load static %}
+    <img src="{% static member.image.url|slice:"15:" %}" alt="Member Image"/>
+    <p>Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a></p>
+    <p>{{ member.profile }}</p>
+    <p>Website: <a href="{{ member.website }}">{{ member.website }}</a></p>
+{% endblock %}
