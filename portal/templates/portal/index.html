@@ -1,3 +1,5 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}"/>
 <h1><a href="/">WHIG</a></h1>
 {% if all_members %}
     <h3><a href="{% url 'members:index' %}">WHIG Members:</a></h3>
